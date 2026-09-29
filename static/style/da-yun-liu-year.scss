@@ -1,0 +1,73 @@
+.yy-card {
+  padding: 2.13vw 2.13vw 1.07vw;
+}
+/* 固定格子宽 + 横向滚动（大运/流年/流月共用） */
+.scroll-card {
+  padding: 2.13vw 2.13vw 1.07vw;
+}
+.scroll-x {
+  width: 100%;
+  white-space: nowrap;
+}
+.row-fixed {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+}
+.row-fixed .cell {
+  flex: 0 0 9.33vw;
+  width: 9.33vw;
+  min-width: 9.33vw;
+  text-align: center;
+  border-left: 0.13vw solid var(--border-color, #e5e5e5);
+  &:first-child {
+    border-left: none;
+  }
+  &.selected {
+    background: var(--theme-color, #98c4cf);
+    font-weight: bold;
+  }
+}
+.row {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  .cell {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    border-left: 0.13vw solid var(--border-color, #e5e5e5);
+    &:first-child {
+      border-left: none;
+    }
+    &.selected {
+      background: var(--theme-color, #98c4cf);
+      font-weight: bold;
+    }
+  }
+}
+.cell-wrap {
+  position: relative;
+}
+.corner-col {
+  position: absolute;
+  top: 0.27vw;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.side-val {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+  padding: 0 0.27vw;
+}
+.small {
+  font-size: 2.93vw;
+}
+.zhan {
+  opacity: 0;
+}
