@@ -1,3 +1,24 @@
+/* ============================================================
+   主题色变量（默认主题色 = blue，全局唯一取值出口）
+   $theme-color / $theme-color-50：用作各处 CSS 变量的兜底值
+   （与 uni.scss 注入的同名变量保持一致；改默认色只需改 uni.scss 里的 $theme，此处仅在独立编译时兜底）
+   ============================================================ */
+$theme: blue !default;
+/**
+ * 六套主题名 → hex 对照表（与 types/Theme.ts 的 PALETTE 保持一致）
+ * 供下方通过 map-get($theme-colors, $theme) 取值
+ */
+$theme-colors: (
+  red: #e8b8b8,
+  pink: #d989a8,
+  orange: #ecd1ab,
+  green: #98c4cf,
+  blue: #A6BFE8,
+  purple: #D4BFE8
+);
+$theme-color: map-get($theme-colors, $theme) !default; /* blue = #A6BFE8 */
+$theme-color-50: rgba($theme-color, 0.5) !default;
+
 /* ===== 全局字号基线（原 font.scss，已合并） ===== */
 /* ============================================================
    全局字号常量（唯一）· 纯 vw 等比版
@@ -115,7 +136,7 @@ uni-label {
 /* 已开：主题色半透明打底（覆盖 uni 内联写入的完全主题色） */
 :deep(.uni-switch-input-checked) {
   border-radius: 3.2vw !important;
-  background: var(--theme-color-50, rgba(152, 196, 207, 0.5)) !important;
+  background: var(--theme-color-50, #{$theme-color-50}) !important;
   border: none !important;
 }
 
@@ -135,7 +156,7 @@ uni-label {
   transform: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: var(--theme-color, #98c4cf) !important;
+  background: var(--theme-color, #{$theme-color}) !important;
   box-shadow: 0 0.27vw 0.8vw rgba(0, 0, 0, 0.15) !important;
   transition: left 0.2s !important;
   border: none !important;
